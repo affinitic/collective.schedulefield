@@ -1,38 +1,48 @@
+# -*- coding: utf-8 -*-
+
+version = '0.1.dev0'
+
 from setuptools import setup, find_packages
 
-version = '1.2.7.dev0'
+long_description = (
+    open('README.rst').read()
+    + '\n' +
+    'Contributors\n'
+    '============\n'
+    + '\n' +
+    open('CONTRIBUTORS.rst').read()
+    + '\n' +
+    open('CHANGES.rst').read()
+    + '\n')
 
 setup(name='collective.schedulefield',
       version=version,
-      description="zope schedule field with widget",
-      long_description=open("README.md").read() + "\n" +
-          open("HISTORY.txt").read(),
+      description='Schedule field for zope forms',
+      long_description=long_description,
       classifiers=[
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
-      keywords='z3cform schedule field widget',
-      author='Rok Garbas',
-      author_email='rok@garbas.si',
-      url='https://github.com/collective/collective.schedulefield',
-      license='GPL version 2',
-      packages=find_packages('src', exclude=['ez_setup']),
-      package_dir={'': 'src'},
-      namespace_packages=['collective'],
+          "Environment :: Web Environment",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2.7",
+          "Framework :: Plone",
+          "Framework :: Plone :: 4.2",
+          "Framework :: Plone :: 4.3",
+      ],
+      keywords='',
+      author='IMIO',
+      author_email='support@imio.be',
+      url='https://github.com/imio/',
+      license='gpl',
+      packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'z3c.form',
-          'zope.deprecation'
+          'Plone',
+          # -*- Extra requirements: -*-
       ],
-      extras_require=dict(test=[
-            'z3c.form',
-            'zope.browserpage',
-            'zope.publisher',
-            'zope.testing',
-            'zope.traversing',
-            'zc.buildout',
-            'Zope2',
-            ]),
+      extras_require={
+          'test': [
+          ]
+      },
+      entry_points={},
       )
