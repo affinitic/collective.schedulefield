@@ -127,6 +127,8 @@ class ScheduleWidget(HTMLInputWidget, Widget):
         We do not show days without value
         """
         must_show = False
+        if not self.value:
+            return must_show
         for day_section in self.day_sections:
             if self.value.get(day).get(day_section):
                 must_show = True
