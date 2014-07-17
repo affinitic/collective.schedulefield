@@ -3,7 +3,8 @@
       tal:omit-tag="">
   <tal:for tal:repeat="day view/days">
     <tal:block tal:define="key python:day[0];
-                           name python:day[1]">
+                           name python:day[1]"
+               tal:condition="python:view.must_show_day(key)">
       <span tal:content="name" class="schedule-widget-day" />
       <br />
 

@@ -121,6 +121,17 @@ class ScheduleWidget(HTMLInputWidget, Widget):
             return None
         return data
 
+    def must_show_day(self, day):
+        """
+        Tell if template must show the day or not
+        We do not show days without value
+        """
+        must_show = False
+        for day_section in self.day_sections:
+            if self.value.get(day).get(day_section):
+                must_show = True
+        return must_show
+
 
 @adapter(ISchedule, IFormLayer)
 @implementer(IFieldWidget)
