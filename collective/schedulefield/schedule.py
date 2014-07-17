@@ -66,8 +66,8 @@ class ScheduleWidget(HTMLInputWidget, Widget):
     klass = u'schedule-widget'
     css = u'schedule'
     value = u''
-    size = 10
-    maxlength = 10
+    size = 6
+    maxlength = 5
 
     @property
     def days(self):
