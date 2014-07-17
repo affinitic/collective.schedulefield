@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+from datetime import time
 
 from zope import schema
 from zope.component import adapter
@@ -8,6 +9,7 @@ from zope.interface import implementer
 from zope.interface import implements
 from zope.schema.interfaces import IDict
 from zope.schema.interfaces import IFromUnicode
+from zope.schema.interfaces import WrongContainedType
 
 from z3c.form.interfaces import IFormLayer
 from z3c.form.interfaces import IFieldWidget
@@ -27,15 +29,33 @@ class ISchedule(IDict):
 class Schedule(schema.Dict):
     implements(ISchedule, IFromUnicode)
 
-    def fromUnicode(self, str):
+    def fromUnicode(self, value):
         """
         """
-        self.validate(str)
-        return str
+        self.validate(value)
+        return value
 
-    def validate(self, str):
-        # XXX valider le type de valeur
-        pass
+    def validate(self, value):
+        value = json.loads(value)
+        for day in value:
+            for day_section in value[day]:
+                error = self._validate_format(value[day][day_section])
+                if error:
+                    raise WrongContainedType(error, self.__name__)
+
+    def _validate_format(self, data):
+        """
+        12:10 > time(12, 10)
+        """
+        if not data:
+            return None
+        hour, minute = data.split(':')
+        try:
+            time(int(hour), int(minute))
+        except ValueError:
+            return _(u'Not a valid time format.')
+
+        return None
 
 
 class ScheduleWidget(HTMLInputWidget, Widget):
@@ -70,13 +90,20 @@ class ScheduleWidget(HTMLInputWidget, Widget):
         self.value = json.loads(self.value)
 
     def extract(self):
-        # XXX il va y avoir plusieurs champs par jour
         datas = {}
         for key, name in self.days:
-            data = self.request.get('{0}.{1}'.format(self.name, key), None)
-            datas[key] = data
+            datas[key] = {}
+            for day_section in self.day_sections:
+                data = self.request.get('{0}.{1}.{2}'.format(self.name, key, day_section), None)
+                datas[key][day_section] = self._format(data)
 
         return json.dumps(datas)
+
+    @staticmethod
+    def _format(data):
+        if data == '__:__':
+            return None
+        return data
 
 
 @adapter(ISchedule, IFormLayer)

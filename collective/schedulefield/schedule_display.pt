@@ -4,43 +4,46 @@
   <tal:for tal:repeat="day view/days">
     <tal:block tal:define="key python:day[0];
                            name python:day[1]">
-      <span tal:replace="name" />
+      <span tal:content="name" class="schedule-widget-day" />
+      <br />
 
-      <span id="" name="" class="" title="" lang="" disabled=""
-             readonly="" alt="" tabindex="" accesskey="" size="" maxlength=""
-             style="" value="" type="text"
-             tal:attributes="id view/id;
-                             name string:${view/name}.${key};
-                             class view/klass;
-                             style view/style;
-                             title view/title;
-                             lang view/lang;
-                             onclick view/onclick;
-                             ondblclick view/ondblclick;
-                             onmousedown view/onmousedown;
-                             onmouseup view/onmouseup;
-                             onmouseover view/onmouseover;
-                             onmousemove view/onmousemove;
-                             onmouseout view/onmouseout;
-                             onkeypress view/onkeypress;
-                             onkeydown view/onkeydown;
-                             onkeyup view/onkeyup;
-                             disabled view/disabled;
-                             tabindex view/tabindex;
-                             onfocus view/onfocus;
-                             onblur view/onblur;
-                             onchange view/onchange;
-                             readonly view/readonly;
-                             alt view/alt;
-                             accesskey view/accesskey;
-                             onselect view/onselect;
-                             size view/size;
-                             maxlength view/maxlength">
+      <tal:for tal:repeat="day_section view/day_sections">
+        <span id="" name="" class="" title="" lang="" disabled=""
+               readonly="" alt="" tabindex="" accesskey="" size="" maxlength=""
+               style="" value="" type="text"
+               tal:attributes="id view/id;
+                               name string:${view/name}.${key}.${day_section};
+                               class view/klass;
+                               style view/style;
+                               title view/title;
+                               lang view/lang;
+                               onclick view/onclick;
+                               ondblclick view/ondblclick;
+                               onmousedown view/onmousedown;
+                               onmouseup view/onmouseup;
+                               onmouseover view/onmouseover;
+                               onmousemove view/onmousemove;
+                               onmouseout view/onmouseout;
+                               onkeypress view/onkeypress;
+                               onkeydown view/onkeydown;
+                               onkeyup view/onkeyup;
+                               disabled view/disabled;
+                               tabindex view/tabindex;
+                               onfocus view/onfocus;
+                               onblur view/onblur;
+                               onchange view/onchange;
+                               readonly view/readonly;
+                               alt view/alt;
+                               accesskey view/accesskey;
+                               onselect view/onselect;
+                               size view/size;
+                               maxlength view/maxlength">
 
-         <tal:block tal:condition="view/value"
-                    tal:content="python:view.value.get(key)" />
+           <tal:block tal:condition="view/value"
+                      tal:content="python:view.value.get(key).get(day_section)" />
 
-      </span>
+        </span>
+      </tal:for>
 
       <br />
     </tal:block>

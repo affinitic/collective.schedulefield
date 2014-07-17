@@ -8,7 +8,8 @@
   <tal:for tal:repeat="day view/days">
     <tal:block tal:define="key python:day[0];
                            name python:day[1]">
-      <span tal:replace="python:name" />
+      <span tal:content="python:name" class="schedule-widget-day" />
+      <br />
 
       <tal:for tal:repeat="day_section view/day_sections">
         <input id="" name="" class="" title="" lang="" disabled=""
@@ -30,7 +31,7 @@
                                onkeypress view/onkeypress;
                                onkeydown view/onkeydown;
                                onkeyup view/onkeyup;
-                               value python:view.value.get(key);
+                               value python:view.value.get(key).get(day_section);
                                disabled view/disabled;
                                tabindex view/tabindex;
                                onfocus view/onfocus;
@@ -43,7 +44,7 @@
                                size view/size;
                                maxlength view/maxlength" />
 
-        </tal:for>
+      </tal:for>
       <br />
     </tal:block>
   </tal:for>
