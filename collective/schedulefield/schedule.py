@@ -58,6 +58,13 @@ class ScheduleWidget(HTMLInputWidget, Widget):
                 ('saturday', _('Saturday')),
                 ('sunday', _('Sunday')))
 
+    @property
+    def day_sections(self):
+        return ('morningstart',
+                'morningend',
+                'afternoonstart',
+                'afternoonend')
+
     def update(self):
         super(ScheduleWidget, self).update()
         self.value = json.loads(self.value)
@@ -70,6 +77,7 @@ class ScheduleWidget(HTMLInputWidget, Widget):
             datas[key] = data
 
         return json.dumps(datas)
+
 
 @adapter(ISchedule, IFormLayer)
 @implementer(IFieldWidget)

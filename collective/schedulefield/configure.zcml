@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="z3c.form">
 
@@ -8,6 +9,16 @@
       for=".schedule.ISchedule
            z3c.form.interfaces.IFormLayer"
       />
+
+  <browser:resource
+    file="js/jquery.maskedinput.min.js"
+    name="jquery.maskedinput.min.js"
+    />
+
+  <browser:resource
+    file="js/schedulemask.js"
+    name="schedulemask.js"
+    />
 
   <z3c:widgetTemplate
       mode="display"
