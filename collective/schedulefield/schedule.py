@@ -13,6 +13,7 @@ from zope.schema.interfaces import WrongContainedType
 
 from z3c.form.interfaces import IFormLayer
 from z3c.form.interfaces import IFieldWidget
+from z3c.form.interfaces import NO_VALUE
 
 from z3c.form.widget import FieldWidget
 from z3c.form.widget import Widget
@@ -87,17 +88,32 @@ class ScheduleWidget(HTMLInputWidget, Widget):
 
     def update(self):
         super(ScheduleWidget, self).update()
-        self.value = json.loads(self.value)
+        if self.value and self.value is not NO_VALUE:
+            self.value = json.loads(self.value)
 
     def extract(self):
         datas = {}
+        is_empty = True
         for key, name in self.days:
             datas[key] = {}
             for day_section in self.day_sections:
                 data = self.request.get('{0}.{1}.{2}'.format(self.name, key, day_section), None)
-                datas[key][day_section] = self._format(data)
+                formated = self._format(data)
+                datas[key][day_section] = formated
+                if formated is not None:
+                    is_empty = False
 
+        if is_empty:
+            return NO_VALUE
         return json.dumps(datas)
+
+    def get_hour_value(self, day, day_section):
+        """
+        return hour for a specific day section
+        """
+        if (not self.value) or (self.value is NO_VALUE):
+            return u''
+        return self.value.get(day).get(day_section)
 
     @staticmethod
     def _format(data):

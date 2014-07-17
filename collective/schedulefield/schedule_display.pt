@@ -40,7 +40,7 @@
                                maxlength view/maxlength">
 
            <tal:block tal:condition="view/value"
-                      tal:content="python:view.value.get(key).get(day_section)" />
+                      tal:content="python:view.get_hour_value(key, day_section)" />
 
         </span>
       </tal:for>

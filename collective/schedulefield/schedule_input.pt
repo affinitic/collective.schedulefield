@@ -31,7 +31,7 @@
                                onkeypress view/onkeypress;
                                onkeydown view/onkeydown;
                                onkeyup view/onkeyup;
-                               value python:view.value.get(key).get(day_section);
+                               value python:view.get_hour_value(key, day_section);
                                disabled view/disabled;
                                tabindex view/tabindex;
                                onfocus view/onfocus;
