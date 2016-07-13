@@ -15,7 +15,6 @@ from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.interface import provider
-from zope import schema
 
 from collective.schedulefield import _
 from collective.schedulefield.schedule import Schedule

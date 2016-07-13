@@ -16,5 +16,10 @@ from collective.schedulefield.behavior import IScheduledContent
 class ScheduledContentViewlet(WidgetsView, base.ViewletBase):
     schema = IScheduledContent
 
+    def update(self):
+        if self.can_view is True:
+            super(ScheduledContentViewlet, self).update()
+
+    @property
     def can_view(self):
         return IScheduledContent.providedBy(self.context)
