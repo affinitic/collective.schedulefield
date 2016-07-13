@@ -1,55 +1,53 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2016-07-13 14:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language-Code: fr\n"
-"Language-Name: French\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: cpskin\n"
-"Language: \n"
-"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+"Domain: DOMAIN\n"
 
 #: ../schedule.py:80
 msgid "Friday"
-msgstr "Vendredi"
+msgstr ""
 
 #: ../schedule.py:76
 msgid "Monday"
-msgstr "Lundi"
+msgstr ""
 
 #: ../schedule.py:59
 msgid "Not a valid time format."
-msgstr "Le format d'heure est incorrect"
+msgstr ""
 
 #: ../schedule.py:81
 msgid "Saturday"
-msgstr "Samedi"
+msgstr ""
 
 #: ../behavior.py:29
 #: ../scheduled_content_viewlet.pt:7
 msgid "Schedule"
-msgstr "Horaire"
+msgstr ""
 
 #: ../schedule.py:82
 msgid "Sunday"
-msgstr "Dimanche"
+msgstr ""
 
 #: ../schedule.py:79
 msgid "Thursday"
-msgstr "Jeudi"
+msgstr ""
 
 #: ../schedule.py:77
 msgid "Tuesday"
-msgstr "Mardi"
+msgstr ""
 
 #: ../schedule.py:78
 msgid "Wednesday"
-msgstr "Mercredi"
+msgstr ""
 
