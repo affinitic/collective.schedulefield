@@ -3,9 +3,19 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:z3c="http://namespaces.zope.org/z3c"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.schedulefield">
 
   <i18n:registerTranslations directory="locales" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.schedulefield"
+      directory="profiles/default"
+      description="Installs the collective.schedulefield add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
   <adapter
       factory=".schedule.ScheduleFieldWidget"
@@ -43,5 +53,29 @@
       layer="z3c.form.interfaces.IFormLayer"
       template="schedule_hidden.pt"
       />
+
+
+  <plone:behavior
+    title="Scheduled Content"
+    description="Adds schedule field"
+    provides=".behavior.IScheduledContent"
+    factory=".behavior.ScheduledContent"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".behavior.IScheduledContent"
+    />
+
+  <browser:viewlet
+    name="schedulefield.schedule"
+    for="*"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+    class=".viewlet.ScheduledContentViewlet"
+    template="scheduled_content_viewlet.pt"
+    permission="zope2.View"
+    />
+
+  <browser:resourceDirectory
+    name="collective.schedulefield"
+    directory="static"
+    />
 
 </configure>

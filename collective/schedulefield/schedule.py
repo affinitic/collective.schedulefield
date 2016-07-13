@@ -39,8 +39,10 @@ class Schedule(schema.Dict):
     def validate(self, value):
         value = json.loads(value)
         for day in value:
-            for day_section in value[day]:
-                error = self._validate_format(value[day][day_section])
+            for section in value[day]:
+                if section == 'comment':
+                    continue
+                error = self._validate_format(value[day][section])
                 if error:
                     raise WrongContainedType(error, self.__name__)
 
@@ -66,8 +68,8 @@ class ScheduleWidget(HTMLInputWidget, Widget):
     klass = u'schedule-widget'
     css = u'schedule'
     value = u''
-    size = 6
-    maxlength = 5
+    size = None
+    maxlength = None
 
     @property
     def days(self):
@@ -95,9 +97,16 @@ class ScheduleWidget(HTMLInputWidget, Widget):
         datas = {}
         is_empty = True
         for key, name in self.days:
-            datas[key] = {}
+            datas[key] = {
+                'comment': self.request.get(
+                    '{0}.{1}.comment'.format(self.name, key),
+                ),
+            }
             for day_section in self.day_sections:
-                data = self.request.get('{0}.{1}.{2}'.format(self.name, key, day_section), None)
+                data = self.request.get(
+                    '{0}.{1}.{2}'.format(self.name, key, day_section),
+                    None,
+                )
                 formated = self._format(data)
                 datas[key][day_section] = formated
                 if formated is not None:
@@ -114,6 +123,12 @@ class ScheduleWidget(HTMLInputWidget, Widget):
         if (not self.value) or (self.value is NO_VALUE):
             return u''
         return self.value.get(day).get(day_section)
+
+    def get_comment(self, day):
+        """Return the comment for a specific day"""
+        if not self.value or self.value is NO_VALUE:
+            return u''
+        return self.value.get(day).get('comment')
 
     @staticmethod
     def _format(data):
