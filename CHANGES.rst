@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2 (unreleased)
+0.2 (2016-07-14)
 ----------------
 
 - Add the ScheduledContent behavior
