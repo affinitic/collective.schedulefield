@@ -4,7 +4,8 @@ Changelog
 0.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Do not render the viewlet if there is no values
+  [mpeeters]
 
 
 0.2 (2016-07-14)
