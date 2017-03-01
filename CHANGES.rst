@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.3 (unreleased)
+0.3 (2017-03-01)
 ----------------
 
 - Do not render the viewlet if there is no values
