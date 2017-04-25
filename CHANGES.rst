@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4 (unreleased)
+0.4 (2017-04-25)
 ----------------
 
 - Bugfix, do not try to load json value if there is no values.
