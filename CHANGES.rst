@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.5 (unreleased)
+0.5 (2017-04-27)
 ----------------
 
 - Bugfix: get json schedule.
