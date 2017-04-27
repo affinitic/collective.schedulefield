@@ -4,13 +4,14 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Bugfix: get json schedule.
+  [bsuttor]
 
 
 0.4 (2017-04-25)
 ----------------
 
-- Bugfix, do not try to load json value if there is no values.
+- Bugfix: do not try to load json value if there is no values.
   [bsuttor]
 
 0.3 (2017-03-01)
