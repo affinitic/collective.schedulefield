@@ -4,8 +4,8 @@ Changelog
 0.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Added missing z3c.form meta.zcml.
+  [sgeulette]
 
 0.5 (2017-04-27)
 ----------------

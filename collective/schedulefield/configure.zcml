@@ -8,6 +8,7 @@
     i18n_domain="collective.schedulefield">
 
   <i18n:registerTranslations directory="locales" />
+  <include package="z3c.form" file="meta.zcml" />
 
   <genericsetup:registerProfile
       name="default"
