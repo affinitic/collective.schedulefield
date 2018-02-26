@@ -39,7 +39,8 @@ class Schedule(schema.Dict):
         return value
 
     def validate(self, value):
-        value = json.loads(value)
+        if type(value) != dict:
+            value = json.loads(value)
         for day in value:
             for section in value[day]:
                 if section == 'comment':
@@ -92,7 +93,7 @@ class ScheduleWidget(HTMLInputWidget, Widget):
 
     def update(self):
         super(ScheduleWidget, self).update()
-        if self.value and self.value is not NO_VALUE:
+        if self.value and self.value is not NO_VALUE and type(self.value) != dict:
             self.value = json.loads(self.value)
 
     def extract(self):

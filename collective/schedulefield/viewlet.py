@@ -11,7 +11,6 @@ from collective.schedulefield.behavior import IScheduledContent
 from plone.app.layout.viewlets import common as base
 from plone.autoform.view import WidgetsView
 
-import json
 
 
 class ScheduledContentViewlet(WidgetsView, base.ViewletBase):
@@ -25,8 +24,7 @@ class ScheduledContentViewlet(WidgetsView, base.ViewletBase):
     def has_value(self):
         schedule = getattr(self.context, 'schedule', None)
         if schedule:
-            data = json.loads(schedule)
-            for day in data.values():
+            for day in schedule.values():
                 if len([v for v in day.values() if v]) > 0:
                     return True
         return False
