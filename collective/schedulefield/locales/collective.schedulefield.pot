@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-07-13 14:18+0000\n"
+"POT-Creation-Date: 2018-02-26 14:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,81 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.schedulefield\n"
 
-#: ../schedule.py:80
+#: ../configure.zcml:76
+msgid "Adds multi schedule field"
+msgstr ""
+
+#: ../configure.zcml:67
+msgid "Adds schedule field"
+msgstr ""
+
+#: ../behavior.py:71
+msgid "End date"
+msgstr ""
+
+#: ../schedule.py:83
 msgid "Friday"
 msgstr ""
 
-#: ../schedule.py:76
+#: ../configure.zcml:19
+msgid "Installs the collective.schedulefield add-on."
+msgstr ""
+
+#: ../schedule.py:79
 msgid "Monday"
 msgstr ""
 
-#: ../schedule.py:59
+#: ../behavior.py:98
+#: ../multi_scheduled_content_viewlet.pt:11
+msgid "Multi Schedule"
+msgstr ""
+
+#: ../configure.zcml:76
+msgid "Multi scheduled Content"
+msgstr ""
+
+#: ../schedule.py:62
 msgid "Not a valid time format."
 msgstr ""
 
-#: ../schedule.py:81
+#: ../schedule.py:84
 msgid "Saturday"
 msgstr ""
 
-#: ../behavior.py:29
+#: ../behavior.py:35
+#: ../multi_scheduled_content_viewlet.pt:7
 #: ../scheduled_content_viewlet.pt:7
 msgid "Schedule"
 msgstr ""
 
-#: ../schedule.py:82
+#: ../configure.zcml:67
+msgid "Scheduled Content"
+msgstr ""
+
+#: ../behavior.py:66
+msgid "Start date"
+msgstr ""
+
+#: ../schedule.py:85
 msgid "Sunday"
 msgstr ""
 
-#: ../schedule.py:79
+#: ../schedule.py:82
 msgid "Thursday"
 msgstr ""
 
-#: ../schedule.py:77
+#: ../behavior.py:61
+msgid "Title"
+msgstr ""
+
+#: ../schedule.py:80
 msgid "Tuesday"
 msgstr ""
 
-#: ../schedule.py:78
+#: ../schedule.py:81
 msgid "Wednesday"
 msgstr ""
 
+#: ../configure.zcml:19
+msgid "collective.schedulefield"
+msgstr ""
