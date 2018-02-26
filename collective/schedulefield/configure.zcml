@@ -65,6 +65,15 @@
     marker=".behavior.IScheduledContent"
     />
 
+  <plone:behavior
+    title="Multi scheduled Content"
+    description="Adds multi schedule field"
+    provides=".behavior.IMultiScheduledContent"
+    factory=".behavior.MultiScheduledContent"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".behavior.IMultiScheduledContent"
+    />
+
   <browser:viewlet
     name="schedulefield.schedule"
     for="*"
