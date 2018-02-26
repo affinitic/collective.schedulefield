@@ -5,6 +5,7 @@ from datetime import time
 
 from zope import schema
 from zope.component import adapter
+from zope.component import adapts
 from zope.interface import implementer
 from zope.interface import implements
 from zope.schema.interfaces import IDict
@@ -15,6 +16,7 @@ from z3c.form.interfaces import IFormLayer
 from z3c.form.interfaces import IFieldWidget
 from z3c.form.interfaces import NO_VALUE
 
+from z3c.form.converter import BaseDataConverter
 from z3c.form.widget import FieldWidget
 from z3c.form.widget import Widget
 from z3c.form.browser.widget import HTMLInputWidget
@@ -148,6 +150,20 @@ class ScheduleWidget(HTMLInputWidget, Widget):
             if self.value.get(day).get(day_section):
                 must_show = True
         return must_show
+
+
+class WidgetDataConverter(BaseDataConverter):
+    adapts(ISchedule, IFieldWidget)
+
+    def toWidgetValue(self, value):
+        if type(value) != dict:
+            return json.loads(value)
+        return value
+
+    def toFieldValue(self, value):
+        if type(value) != dict:
+            return json.loads(value)
+        return value
 
 
 @adapter(ISchedule, IFormLayer)

@@ -55,6 +55,7 @@
       template="schedule_hidden.pt"
       />
 
+  <adapter factory=".schedule.WidgetDataConverter" />
 
   <plone:behavior
     title="Scheduled Content"
