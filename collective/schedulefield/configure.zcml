@@ -75,6 +75,15 @@
     marker=".behavior.IMultiScheduledContent"
     />
 
+  <plone:behavior
+    title="Exceptional closure Content"
+    description="Adds exceptional closure field"
+    provides=".behavior.IExceptionalClosureContent"
+    factory=".behavior.ExceptionalClosureContent"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".behavior.IExceptionalClosureContent"
+    />
+
   <browser:viewlet
     name="schedulefield.schedule"
     for="*"
@@ -90,6 +99,15 @@
     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
     class=".viewlet.MultiScheduledContentViewlet"
     template="multi_scheduled_content_viewlet.pt"
+    permission="zope2.View"
+    />
+
+  <browser:viewlet
+    name="schedulefield.exceptionalclosure"
+    for="*"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+    class=".viewlet.ExceptionalClosureContentViewlet"
+    template="exceptionalclosure_content_viewlet.pt"
     permission="zope2.View"
     />
 

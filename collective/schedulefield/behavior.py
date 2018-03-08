@@ -54,27 +54,42 @@ class WidgetView(WidgetsView):
     schema = IScheduledContent
 
 
-class IScheduledWithTitle(Interface):
-    """ Helper schema for min and max fields """
-
-    title = Text(
-        title=_(u'Title'),
-        required=False
-    )
+class IDateRange(Interface):
+    """IDateRange"""
 
     start_date = Date(
         title=_(u'Start date'),
-        required=False
     )
 
     end_date = Date(
         title=_(u'End date'),
-        required=False
+    )
+
+
+@implementer(IDateRange)
+class DateRange(object):
+    """DateRange"""
+    start_date = FieldProperty(IDateRange['start_date'])
+    end_date = FieldProperty(IDateRange['end_date'])
+
+
+registerFactoryAdapter(IDateRange, DateRange)
+
+
+class IScheduledWithTitle(Interface):
+    """IScheduledWithTitle"""
+
+    title = Text(
+        title=_(u'Title'),
+    )
+
+    dates = List(
+        title=_(u'Dates'),
+        value_type=Object(__name__='DateRange', schema=IDateRange),
     )
 
     schedule = Schedule(
         title=_(u'Schedule'),
-        required=False,
     )
 
 
@@ -82,8 +97,7 @@ class IScheduledWithTitle(Interface):
 class ScheduledWithTitle(object):
     """ScheduledWithTitle"""
     title = FieldProperty(IScheduledWithTitle['title'])
-    start_date = FieldProperty(IScheduledWithTitle['start_date'])
-    end_date = FieldProperty(IScheduledWithTitle['end_date'])
+    dates = FieldProperty(IScheduledWithTitle['dates'])
     schedule = FieldProperty(IScheduledWithTitle['schedule'])
 
 
@@ -115,3 +129,49 @@ class IMultiScheduledContent(Interface):
 @adapter(IDexterityContent)
 class MultiScheduledContent(ScheduledContent):
     pass
+
+
+class IExceptionalClosure(Interface):
+    """IExceptionalClosure"""
+    title = Text(
+        title=_(u'Title'),
+    )
+
+    date = Date(
+        title=_(u'Date'),
+    )
+
+
+@implementer(IExceptionalClosure)
+class ExceptionalClosure(object):
+    """ExceptionalClosure"""
+
+    title = FieldProperty(IExceptionalClosure['title'])
+    date = FieldProperty(IExceptionalClosure['date'])
+
+
+registerFactoryAdapter(IExceptionalClosure, ExceptionalClosure)
+
+
+@provider(IFormFieldProvider)
+class IExceptionalClosureContent(Interface):
+
+    fieldset(
+        'exceptionalclosure',
+        label=_('Exceptional closure'),
+        fields=['exceptional_closure'],
+    )
+
+    exceptional_closure = List(
+        title=_(u'Dates'),
+        value_type=Object(__name__='ExceptionalClosure', schema=IExceptionalClosure, required=False),
+        required=False,
+    )
+
+
+@implementer(IExceptionalClosureContent)
+@adapter(IDexterityContent)
+class ExceptionalClosureContent(object):
+
+    def __init__(self, context):
+        self.context = context
