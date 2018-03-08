@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2018-02-26 14:16+0000\n"
+"POT-Creation-Date: 2018-03-08 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,6 +16,10 @@ msgstr ""
 "Language: \n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
+#: ../configure.zcml:85
+msgid "Adds exceptional closure field"
+msgstr ""
+
 #: ../configure.zcml:76
 msgid "Adds multi schedule field"
 msgstr ""
@@ -24,9 +28,25 @@ msgstr ""
 msgid "Adds schedule field"
 msgstr ""
 
-#: ../behavior.py:71
+#: ../behavior.py:141
+msgid "Date"
+msgstr ""
+
+#: ../behavior.py:87
+msgid "Dates"
+msgstr ""
+
+#: ../behavior.py:65
 msgid "End date"
 msgstr "Date de fin"
+
+#: ../behavior.py:161
+msgid "Exceptional closure"
+msgstr "Fermeture exceptionnelle"
+
+#: ../configure.zcml:85
+msgid "Exceptional closure Content"
+msgstr ""
 
 #: ../schedule.py:83
 msgid "Friday"
@@ -40,8 +60,7 @@ msgstr ""
 msgid "Monday"
 msgstr "Lundi"
 
-#: ../behavior.py:98
-#: ../multi_scheduled_content_viewlet.pt:11
+#: ../behavior.py:112
 msgid "Multi Schedule"
 msgstr "Horaire multiple"
 
@@ -58,8 +77,8 @@ msgid "Saturday"
 msgstr "Samedi"
 
 #: ../behavior.py:35
+#: ../exceptionalclosure_content_viewlet.pt:7
 #: ../multi_scheduled_content_viewlet.pt:7
-#: ../scheduled_content_viewlet.pt:7
 msgid "Schedule"
 msgstr "Horaire"
 
@@ -67,7 +86,7 @@ msgstr "Horaire"
 msgid "Scheduled Content"
 msgstr ""
 
-#: ../behavior.py:66
+#: ../behavior.py:61
 msgid "Start date"
 msgstr "Date de début"
 
@@ -79,7 +98,7 @@ msgstr "Dimanche"
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: ../behavior.py:61
+#: ../behavior.py:83
 msgid "Title"
 msgstr "Titre"
 
