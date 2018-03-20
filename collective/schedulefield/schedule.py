@@ -9,17 +9,20 @@ from zope.component import adapts
 from zope.interface import implementer
 from zope.interface import implements
 from zope.schema.interfaces import IDict
+from zope.schema.interfaces import IObject
 from zope.schema.interfaces import IFromUnicode
 from zope.schema.interfaces import WrongContainedType
 
 from z3c.form.interfaces import IFormLayer
 from z3c.form.interfaces import IFieldWidget
 from z3c.form.interfaces import NO_VALUE
+from z3c.form.object import ObjectWidget
 
 from z3c.form.converter import BaseDataConverter
 from z3c.form.widget import FieldWidget
 from z3c.form.widget import Widget
 from z3c.form.browser.widget import HTMLInputWidget
+from z3c.form.browser.widget import HTMLFormElement
 
 from collective.schedulefield import _
 
@@ -27,6 +30,14 @@ from collective.schedulefield import _
 class ISchedule(IDict):
     """
     """
+
+
+class IScheduleWithTitle(IObject):
+    """IScheduleWithTitle"""
+
+
+class ScheduleWithTitle(schema.Object):
+    implements(IScheduleWithTitle)
 
 
 class Schedule(schema.Dict):
@@ -153,6 +164,13 @@ class ScheduleWidget(HTMLInputWidget, Widget):
         return must_show
 
 
+class ScheduleWithTitleWidget(HTMLFormElement, ObjectWidget):
+    implements(IScheduleWithTitle)
+
+    klass = u'object-widget'
+    css = u'object'
+
+
 class WidgetDataConverter(BaseDataConverter):
     adapts(ISchedule, IFieldWidget)
 
@@ -172,3 +190,10 @@ class WidgetDataConverter(BaseDataConverter):
 def ScheduleFieldWidget(field, request):
     """IFieldWidget factory for cheduleWidget."""
     return FieldWidget(field, ScheduleWidget(request))
+
+
+@adapter(IObject, IFormLayer)
+@implementer(IFieldWidget)
+def ObjectFieldWidget(field, request):
+    """IFieldWidget factory for IObjectWidget."""
+    return FieldWidget(field, ScheduleWithTitleWidget(request))

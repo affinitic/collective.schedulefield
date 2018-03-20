@@ -18,6 +18,7 @@ from zope.interface import provider
 
 from collective.schedulefield import _
 from collective.schedulefield.schedule import Schedule
+from collective.schedulefield.schedule import ScheduleWithTitle
 
 from z3c.form.object import registerFactoryAdapter
 from zope.schema import Date
@@ -120,7 +121,7 @@ class IMultiScheduledContent(Interface):
 
     multi_schedule = List(
         title=_(u'Multi Schedule'),
-        value_type=Object(__name__='MultiSchedule', schema=IScheduledWithTitle, required=False),
+        value_type=ScheduleWithTitle(__name__='MultiSchedule', schema=IScheduledWithTitle, required=False),
         required=False,
     )
 
