@@ -30,6 +30,12 @@
            z3c.form.interfaces.IFormLayer"
       />
 
+  <adapter
+      factory=".exceptionalclosure.ObjectFieldWidget"
+      for=".exceptionalclosure.IExceptionalClosure
+           z3c.form.interfaces.IFormLayer"
+      />
+
   <browser:resource
     file="js/jquery.maskedinput.min.js"
     name="jquery.maskedinput.min.js"
@@ -52,6 +58,13 @@
       widget=".schedule.IScheduleWithTitle"
       layer="z3c.form.interfaces.IFormLayer"
       template="schedulewithtitle_display.pt"
+      />
+
+  <z3c:widgetTemplate
+      mode="display"
+      widget=".exceptionalclosure.IExceptionalClosure"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="exceptionalclosure_display.pt"
       />
 
   <z3c:widgetTemplate

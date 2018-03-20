@@ -19,6 +19,7 @@ from zope.interface import provider
 from collective.schedulefield import _
 from collective.schedulefield.schedule import Schedule
 from collective.schedulefield.schedule import ScheduleWithTitle
+from collective.schedulefield.exceptionalclosure import ExceptionalClosure
 
 from z3c.form.object import registerFactoryAdapter
 from zope.schema import Date
@@ -144,14 +145,14 @@ class IExceptionalClosure(Interface):
 
 
 @implementer(IExceptionalClosure)
-class ExceptionalClosure(object):
-    """ExceptionalClosure"""
+class ExceptionalClosureObject(object):
+    """ExceptionalClosureObject"""
 
     title = FieldProperty(IExceptionalClosure['title'])
     date = FieldProperty(IExceptionalClosure['date'])
 
 
-registerFactoryAdapter(IExceptionalClosure, ExceptionalClosure)
+registerFactoryAdapter(IExceptionalClosure, ExceptionalClosureObject)
 
 
 @provider(IFormFieldProvider)
@@ -165,7 +166,7 @@ class IExceptionalClosureContent(Interface):
 
     exceptional_closure = List(
         title=_(u'Dates'),
-        value_type=Object(__name__='ExceptionalClosure', schema=IExceptionalClosure, required=False),
+        value_type=ExceptionalClosure(__name__='ExceptionalClosure', schema=IExceptionalClosure, required=False),
         required=False,
     )
 
