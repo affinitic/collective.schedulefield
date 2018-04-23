@@ -4,6 +4,9 @@ Changelog
 0.6 (unreleased)
 ----------------
 
+- Also view schedule if only comment is set.
+  [bsuttor]
+
 - Added missing z3c.form meta.zcml.
   [sgeulette]
 

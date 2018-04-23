@@ -145,7 +145,7 @@ class ScheduleWidget(HTMLInputWidget, Widget):
         if not self.value:
             return must_show
         for day_section in self.day_sections:
-            if self.value.get(day).get(day_section):
+            if self.value.get(day).get(day_section) or self.value.get(day).get('comment'):
                 must_show = True
         return must_show
 
