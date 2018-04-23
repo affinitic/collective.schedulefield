@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6 (unreleased)
+0.6 (2018-04-23)
 ----------------
 
 - Also view schedule if only comment is set.
