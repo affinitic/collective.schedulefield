@@ -25,7 +25,7 @@ from z3c.form.object import registerFactoryAdapter
 from zope.schema import Date
 from zope.schema import List
 from zope.schema import Object
-from zope.schema import Text
+from zope.schema import TextLine
 from zope.schema.fieldproperty import FieldProperty
 
 
@@ -81,7 +81,7 @@ registerFactoryAdapter(IDateRange, DateRange)
 class IScheduledWithTitle(Interface):
     """IScheduledWithTitle"""
 
-    title = Text(
+    title = TextLine(
         title=_(u'Title'),
     )
 
@@ -135,7 +135,7 @@ class MultiScheduledContent(ScheduledContent):
 
 class IExceptionalClosure(Interface):
     """IExceptionalClosure"""
-    title = Text(
+    title = TextLine(
         title=_(u'Title'),
     )
 
