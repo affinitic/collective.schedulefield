@@ -95,7 +95,7 @@ class ExceptionalClosureContentViewlet(WidgetsView, base.ViewletBase):
     def get_closure(self):
         dates = self.w.get('exceptional_closure').widgets
         for d in dates:
-            if date.today() == d._value['date']:
+            if d._value['date'] - timedelta(days=TIMEDELTA) <= date.today() <= d._value['date']:
                 return d
 
     @property
