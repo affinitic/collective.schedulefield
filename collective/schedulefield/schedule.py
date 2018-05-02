@@ -175,12 +175,12 @@ class WidgetDataConverter(BaseDataConverter):
     adapts(ISchedule, IFieldWidget)
 
     def toWidgetValue(self, value):
-        if type(value) != dict:
+        if value and type(value) != dict:
             return json.loads(value)
         return value
 
     def toFieldValue(self, value):
-        if type(value) != dict:
+        if value and type(value) != dict:
             return json.loads(value)
         return value
 
