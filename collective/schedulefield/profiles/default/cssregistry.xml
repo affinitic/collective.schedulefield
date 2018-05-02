@@ -7,12 +7,12 @@
     applyPrefix="True"
     compression="safe"
     cookable="True"
-    enabled="on"
+    enabled="1"
     expression=""
     id="++resource++collective.schedulefield/schedulefield.css"
-    media="screen"
+    media="all"
     rel="stylesheet"
-    rendering="link"
+    rendering="import"
     />
 
 </object>

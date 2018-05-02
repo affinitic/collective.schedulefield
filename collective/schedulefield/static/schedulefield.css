@@ -1,3 +1,8 @@
+.schedule-mask-widget, .schedule-widget {
+    display: unset !important;
+    width: inherit !important;
+}
+
 div.schedule-widget-day {
     clear: both;
 }
